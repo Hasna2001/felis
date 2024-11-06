@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Interface Utilisateur</title>
+</head>
+<body>
+    <div id="interface">
+        <h1>Bienvenue sur l'interface !</h1>
+        <p>Contenu réservé aux utilisateurs identifiés.</p>
+    </div>
+
+    <script>
+        // Vérifie si l'identifiant est déjà enregistré
+        if (!localStorage.getItem("identifiant")) {
+            // Demande l'identifiant une seule fois, si non enregistré
+            let identifiant = prompt("Veuillez entrer votre identifiant");
+
+            // Si l'utilisateur entre un identifiant, il est stocké
+            if (identifiant) {
+                localStorage.setItem("identifiant", identifiant);
+            } else {
+                // Si aucun identifiant n'est entré, on peut afficher un message d'erreur
+                document.getElementById("interface").innerHTML = "<p>Identifiant requis pour accéder à cette page.</p>";
+            }
+        } else {
+            console.log("Identifiant mémorisé:", localStorage.getItem("identifiant"));
+            // Affiche automatiquement l'interface sans redemander l'identifiant
+            document.getElementById("interface").style.display = "block";
+        }
+    </script>
+</body>
+</html>
